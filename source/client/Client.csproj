@@ -49,7 +49,7 @@
     <RootNamespace>Client</RootNamespace>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>78407ED7261F2AF70BE8D69C0712123AF237DA91</ManifestCertificateThumbprint>

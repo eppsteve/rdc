@@ -261,8 +261,20 @@ namespace Client
         {
             if (!sendKeysAndMouse)
                 return;
-            eventSender.Write("LCLICK\n");
-            eventSender.Flush();
+
+            switch (e.Button)
+            {
+                case MouseButtons.Left:
+                    eventSender.Write("LCLICK\n");
+                    eventSender.Flush();
+                    break;
+
+                case MouseButtons.Right:
+                    eventSender.Write("RCLICK\n");
+                    eventSender.Flush();
+                    break;
+            }
+            
         }
 
         private void theImage_MouseDown(object sender, MouseEventArgs e)
@@ -354,6 +366,14 @@ namespace Client
         {
             updateDialog = new frmUpdateInterval();
             updateDialog.ShowDialog(this);
+        }
+
+        private void theImage_DoubleClick(object sender, EventArgs e)
+        {
+            if (!sendKeysAndMouse)
+                return;
+            eventSender.Write("DBLCLICK\n");
+            eventSender.Flush();
         }
     }
 }

@@ -30,7 +30,7 @@ namespace Server
         // http://msdn.microsoft.com/en-us/library/windows/desktop/ms646260(v=vs.85).aspx
         private const int MOUSE_LEFTDOWN = 0x02;
         private const int MOUSE_LEFTUP = 0x04;
-        private const int MOUSE_RIGTDOWN = 0x08;
+        private const int MOUSE_RIGHTDOWN = 0x08;
         private const int MOUSE_RIGHTUP = 0x10;
 
         // Variable Declaration
@@ -122,7 +122,17 @@ namespace Server
                     {
                         mouse_event(MOUSE_LEFTDOWN | MOUSE_LEFTUP, Cursor.Position.X, Cursor.Position.Y, 0, 0);
                     }
-                
+                    else if (temp.StartsWith("RCLICK"))
+                    {
+                        mouse_event(MOUSE_RIGHTDOWN | MOUSE_RIGHTUP, Cursor.Position.X, Cursor.Position.Y, 0, 0);
+                    }
+                    else if (temp.StartsWith("DBLCLICK"))
+                    {
+                        mouse_event(MOUSE_LEFTDOWN | MOUSE_LEFTUP, Cursor.Position.X, Cursor.Position.Y, 0, 0);
+                        Thread.Sleep(150);
+                        mouse_event(MOUSE_LEFTDOWN | MOUSE_LEFTUP, Cursor.Position.X, Cursor.Position.Y, 0, 0);
+                    }
+
                     else if (temp.StartsWith("SHUTDOWN"))
                     {
                         mainSocket.Close();
@@ -166,6 +176,7 @@ namespace Server
                 //MessageBox.Show(e.ToString());
             }
         }
+
         private void Form1_Load(object sender, EventArgs e)
         {
             Thread listenForConnections = new Thread(new ThreadStart(startListening));
