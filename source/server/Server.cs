@@ -1,14 +1,4 @@
-﻿/*--------------------------------------------------------------------- 
- * Remote Desktop Control
- * -------------------------
- * Developed by Steve Alogaris
- * 
- * The application establishes a connection to a remote host allowing
- * remote control by sending mouse and keyboards commands. The desktop
- * can be viewed remotely.
- *----------------------------------------------------------------------*/
-
-using System;
+﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
 using System.Net.Sockets;
@@ -20,7 +10,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 namespace Server
 {
-    public partial class Form1 : Form
+    public partial class Server : Form
     {
         // DllImport Provides Control Over The Mouse
         [DllImport("user32.dll", CharSet = CharSet.Auto, CallingConvention = CallingConvention.StdCall)]
@@ -41,18 +31,14 @@ namespace Server
         private Thread eventWatcher;        //Thread to Monitor Client Commands
         private int imageDelay;             //Delay in Milliseconds for Desktop Image Send
 
-        public Form1()
+        public Server()
         {
             InitializeComponent();
             port = 1818;
             imageDelay = 1000;
         }
 
-
-        /// <summary>
-        /// Starts listening for connections
-        /// </summary>
-        public void startListening() {
+        public void StartListening() {
             while (true)
             {
                 try
@@ -73,7 +59,7 @@ namespace Server
                     });
 
                     // Waits for commands in a new thread
-                    eventWatcher = new Thread(new ThreadStart(waitForKeys));
+                    eventWatcher = new Thread(new ThreadStart(WaitForKeys));
                     eventWatcher.Start();
 
                     // Captures the screen and sends it to client
@@ -102,10 +88,7 @@ namespace Server
             }
         }
       
-        /// <summary>
-        /// Waits for commands from client
-        /// </summary>
-        private void waitForKeys() 
+        private void WaitForKeys() 
         {
             try
             {
@@ -177,9 +160,9 @@ namespace Server
             }
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void Server_Load(object sender, EventArgs e)
         {
-            Thread listenForConnections = new Thread(new ThreadStart(startListening));
+            Thread listenForConnections = new Thread(new ThreadStart(StartListening));
             listenForConnections.Start();
         }
     }

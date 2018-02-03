@@ -1,14 +1,4 @@
-﻿/*--------------------------------------------------------------------- 
- * Remote Desktop Control
- * -------------------------
- * Developed by Steve Alogaris
- * 
- * The application establishes a connection to a remote host allowing
- * remote control by sending mouse and keyboards commands. The desktop
- * can be viewed remotely.
- *----------------------------------------------------------------------*/
-
-using System;
+﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
 using System.Net.Sockets;
@@ -41,25 +31,27 @@ namespace Client
             InitializeComponent();
         }
 
-        public void startConnect()
+        public void StartConnect()
         {
             try
             {
                 connector = new TcpClient(ipAdress, port);
                 connected = true;
                 statusLabel.Text = "Connection Established with " + ipAdress;
+                menuFileDisconnect.Enabled = true;
+                menuFileConnect.Enabled = false;
 
-                theThread = new Thread(new ThreadStart(startRead));
+                theThread = new Thread(new ThreadStart(StartRead));
                 theThread.Start();
             }
-            catch (Exception problem)
+            catch (Exception e)
             {
                 MessageBox.Show("Cannot establish a connection", "Failure!");
                 //showConnect();
             }
         }
 
-        public void imageDelayChange(int x)
+        public void ImageDelayChange(int x)
         {
             eventSender.Write("CDELAY " + x + "\n");
             eventSender.Flush();
@@ -72,7 +64,7 @@ namespace Client
         }
 
         //gets the image sent by the server
-        private void startRead()
+        private void StartRead()
         {
             try
             {
@@ -90,12 +82,7 @@ namespace Client
             catch (Exception) {}
         }
 
-        private void Form2_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        public void sendShutdown()
+        public void SendShutdown()
         {
             eventSender.Write("SHUTDOWN\n");
             eventSender.Flush();
@@ -230,10 +217,6 @@ namespace Client
             }
         }
 
-        private void Form2_MouseMove(object sender, MouseEventArgs e)
-        {
-        }
-
         //detects mouse movement and sends the coordinates to the server
         private void theImage_MouseMove(object sender, MouseEventArgs e)
         {
@@ -298,8 +281,6 @@ namespace Client
             //startConnect();
             connectDialog = new frmConnectDialog(this);
             connectDialog.ShowDialog(this);
-            menuFileDisconnect.Enabled = true;
-            menuFileConnect.Enabled = false;
         }
 
         private void controlMouseAndKeyboardToolStripMenuItem_Click(object sender, EventArgs e)
@@ -315,7 +296,7 @@ namespace Client
                             "the the server is set to run on Startup. You will be unable " +
                             "to reconnect until this occurs.\n Continue?", "Warning!", MessageBoxButtons.YesNo);
                 if (reallyShutdown == DialogResult.Yes)
-                    sendShutdown();
+                    SendShutdown();
                 return;
             }
         }

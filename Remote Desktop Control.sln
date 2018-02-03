@@ -5,7 +5,7 @@ VisualStudioVersion = 14.0.22823.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client", "source\client\Client.csproj", "{B5131FFF-A574-479B-AB9D-E84FC080A5FC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Server", "source\server - stealth\Server.csproj", "{13DDEB5E-0BCC-4BF4-8C34-6475B5B0AC9C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Server", "source\server\Server.csproj", "{13DDEB5E-0BCC-4BF4-8C34-6475B5B0AC9C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

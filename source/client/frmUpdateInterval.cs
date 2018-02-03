@@ -27,7 +27,7 @@ namespace Client
 
         private void trackBar1_ValueChanged(object sender, EventArgs e)
         {
-            form.imageDelayChange(trackBar1.Value);
+            form.ImageDelayChange(trackBar1.Value);
             imageDelayLabel.Text = ((float)trackBar1.Value / 1000).ToString();
         }
 

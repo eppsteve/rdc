@@ -1,6 +1,6 @@
 ﻿namespace Server
 {
-    partial class Form1
+    partial class Server
     {
         /// <summary>
         /// Required designer variable.
@@ -40,16 +40,16 @@
             this.txtLog.Size = new System.Drawing.Size(337, 192);
             this.txtLog.TabIndex = 0;
             // 
-            // Form1
+            // Server
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(337, 192);
             this.Controls.Add(this.txtLog);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Name = "Form1";
+            this.Name = "Server";
             this.Text = "Server";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Load += new System.EventHandler(this.Server_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

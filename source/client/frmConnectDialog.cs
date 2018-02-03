@@ -28,7 +28,7 @@ namespace Client
         {
             form.ipAdress = txtIP.Text.ToString();
             form.port = int.Parse(txtPort.Text.ToString());
-            form.startConnect();
+            form.StartConnect();
             this.Close();
         }
 

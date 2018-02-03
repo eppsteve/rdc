@@ -95,7 +95,7 @@
             // menuFileConnect
             // 
             this.menuFileConnect.Name = "menuFileConnect";
-            this.menuFileConnect.Size = new System.Drawing.Size(133, 22);
+            this.menuFileConnect.Size = new System.Drawing.Size(152, 22);
             this.menuFileConnect.Text = "Connect";
             this.menuFileConnect.Click += new System.EventHandler(this.menuFileConnect_Click);
             // 
@@ -103,14 +103,14 @@
             // 
             this.menuFileDisconnect.Enabled = false;
             this.menuFileDisconnect.Name = "menuFileDisconnect";
-            this.menuFileDisconnect.Size = new System.Drawing.Size(133, 22);
+            this.menuFileDisconnect.Size = new System.Drawing.Size(152, 22);
             this.menuFileDisconnect.Text = "Disconnect";
             this.menuFileDisconnect.Click += new System.EventHandler(this.menuFileDisconnect_Click);
             // 
             // menuFileQuit
             // 
             this.menuFileQuit.Name = "menuFileQuit";
-            this.menuFileQuit.Size = new System.Drawing.Size(133, 22);
+            this.menuFileQuit.Size = new System.Drawing.Size(152, 22);
             this.menuFileQuit.Text = "Quit";
             this.menuFileQuit.Click += new System.EventHandler(this.menuFileQuit_Click);
             // 
@@ -215,9 +215,7 @@
             this.Name = "Client";
             this.Text = "Remote Desktop Control";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form2_FormClosed);
-            this.Load += new System.EventHandler(this.Form2_Load);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form2_KeyUp);
-            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form2_MouseMove);
             ((System.ComponentModel.ISupportInitialize)(this.theImage)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
